@@ -34,3 +34,17 @@ textarea {
 button {
 	border: 1px solid red;
 }
+table {
+	border: 3px solid black;
+	tr {
+		padding: 5px;
+		border: 1px solid red;
+	}
+
+	td {
+		padding: 8px;
+	}
+	td.subtotal {
+		text-align: center;
+	}
+}

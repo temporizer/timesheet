@@ -26,15 +26,35 @@
 	
 // $times = get_data('times', 'date', 'startTime', 'endTime', 'task');
 ?>
+	<table>
+		<tr>
+			<td>Date</td>
+			<td>Task</td>
+			<td>Start Time</td>
+			<td>End Time</td>
+			<td># Hours</td>
+		</tr>
 	<?php 
+		$total = NULL;
 		$myResults = getTimes();
-		echo "<pre>";
-		print_r($myResults);
-		echo "</pre>";
+		foreach ($myResults as $key => $value) {
+			$subTotal = $value['endTime'] - $value['startTime'];
+			$total += $subTotal;
+			?>
+			<tr>
+
+				<td><?php echo $value['date']; ?></td>
+				<td><?php echo $value['task']; ?></td>
+				<td><?php echo $value['startTime']; ?></td>
+				<td><?php echo $value['endTime']; ?></td>
+				<td class="total"><?php echo $subTotal; ?></td>
+			</tr>
+			<?php
+		}
 
 	 ?>
-
-
+	</table>
+<?php echo $total . " total hours to date."; ?>
 
 
 	<script src="js/jquery.min.js"></script>
