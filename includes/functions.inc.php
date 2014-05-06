@@ -4,12 +4,13 @@ include_once 'connect.inc.php';
 
 function insertTime() {
 	global $dbc;
-	$date = $_POST['date'];
-	$stime = $_POST['sTime'];
-	$etime = $_POST['eTime'];
+	$startTime = strtotime($_POST['startTime']);
+	$endTime = strtotime($_POST['endTime']);
+	// $startTime = $_POST['startTime'];
+	// $endTime = $_POST['endTime'];
 	$task = $_POST['task'];
 
-	$query = "INSERT INTO times (id, date, startTime, endTime, task) VALUES (null, '$date', '$stime', '$etime', '$task')";
+	$query = "INSERT INTO times (id, startTime, endTime, task) VALUES (null, $startTime, $endTime, '$task')";
 
 	mysqli_query($dbc, $query);
 }

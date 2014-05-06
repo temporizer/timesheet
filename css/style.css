@@ -81,12 +81,12 @@ input, textarea {
 }
 
 input {
-  width: 238px;
+  width: 303px;
   height: 30px;
 }
 
 #stime, #etime {
-  width: 72px;
+  width: 303px;
 }
 
 textarea {

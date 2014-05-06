@@ -16,15 +16,15 @@
 
 
 	<form action="index.php" method="POST">
-		<label for="date">Date: </label><input type="text" id="date" name='date' placeholder="Date">
-		<label for="stime">Start Time: </label><input type="text" id="stime" name="sTime" placeholder="Start Time">
-		<label for="etime">End Time: </label><input type="text" id="etime" name="eTime" placeholder="End Time">
+		<label for="stime">Start Time: </label><input type="text" id="stime" name='startTime'>
+		<label for="etime">End Time: </label><input type="text" id="etime" name='endTime'>
+		<?php echo time(); ?>
 		<textarea name="task" id="task" cols="30" rows="10" placeholder="Task Details"></textarea>
 		<button type="submit">Submit</button>
 	</form>
 	<?php 
 	
-// $times = get_data('times', 'date', 'startTime', 'endTime', 'task');
+// $times = get_data('times', 'date', 'startTime', 'endTime', 'task'); , 1399406598
 ?>
 	<table>
 		<tr>
@@ -37,19 +37,22 @@
 	<?php 
 		$total = NULL;
 		$myResults = getTimes();
-		foreach ($myResults as $key => $value) {
-			$subTotal = $value['endTime'] - $value['startTime'];
-			$total += $subTotal;
-			?>
-			<tr>
 
-				<td><?php echo $value['date']; ?></td>
-				<td><?php echo $value['task']; ?></td>
-				<td><?php echo $value['startTime']; ?></td>
-				<td><?php echo $value['endTime']; ?></td>
-				<td class="total"><?php echo $subTotal; ?></td>
-			</tr>
-			<?php
+		if (count($myResults) >0) {
+			foreach ($myResults as $key => $value) {
+				$subtotal = date("H:i", $value['endTime']) - date("H:i", $value['startTime']);
+				$total += $subtotal;
+				?>
+				<tr>
+
+					<td><?php echo date("m-d-Y", $value['startTime']); ?></td>
+					<td><?php echo $value['task']; ?></td>
+					<td><?php echo date("H:i", $value['startTime']); ?></td>
+					<td><?php echo date("H:i", $value['endTime']); ?></td>
+					<td class="total"><?php echo $subtotal; ?></td>
+				</tr>
+				<?php
+			}
 		}
 
 	 ?>

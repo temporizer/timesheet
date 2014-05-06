@@ -1,11 +1,8 @@
 $(document).ready(function() {
-	$("#stime, #etime").datetimepicker({
-		datepicker:true,
-		format:'H:i'
-	});
 
-	// $("#date").datetimepicker({
-	// 	timepicker: true,
-	// 	format: 'unixtime'
-	// });
+	$("#stime, #etime").datetimepicker({
+		timepicker: true,
+		format: 'Y-m-d H:i'
+		// format: 'unixtime'
+	});
 })
